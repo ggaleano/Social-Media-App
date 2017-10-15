@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12Q-Mt-dXa">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12Q-Mt-dXa" customClass="FancyView" customModule="Social_Media" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devslopes-logo" translatesAutoresizingMaskIntoConstraints="NO" id="gwj-Ll-ZjP">
@@ -61,7 +61,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0J-no-0Y1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0J-no-0Y1" customClass="RoundBtn" customModule="Social_Media" customModuleProvider="target">
                                 <rect key="frame" x="112" y="210.5" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.22745098039215686" green="0.31372549019607843" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -69,28 +69,34 @@
                                     <constraint firstAttribute="height" constant="150" id="e53-yl-DN9"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="f"/>
+                                <connections>
+                                    <action selector="facebookBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ig0-1Z-WRm"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dVG-b7-H4X">
                                 <rect key="frame" x="46" y="390.5" width="283" height="120"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emaill Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-fR-bn9">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emaill Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-fR-bn9" customClass="FancyField" customModule="Social_Media" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="slM-aQ-BSP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="slM-aQ-BSP" customClass="FancyField" customModule="Social_Media" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="45" width="283" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvk-gm-M24">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvk-gm-M24" customClass="FancyBtn" customModule="Social_Media" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="90" width="283" height="30"/>
                                         <color key="backgroundColor" red="0.58823529411764708" green="0.18965055619742593" blue="0.072645276816390728" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Sign in">
                                             <color key="titleColor" red="0.99232083559036255" green="0.99616605043411255" blue="0.99169522523880005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gqW-WU-tBA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -113,10 +119,51 @@
                             <constraint firstAttribute="trailing" secondItem="12Q-Mt-dXa" secondAttribute="trailing" id="wdT-bh-fBg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="gi5-fR-bn9" id="Jfh-gI-ek8"/>
+                        <outlet property="passwordField" destination="slM-aQ-BSP" id="V0f-of-2jw"/>
+                        <segue destination="10T-3c-6Tg" kind="show" identifier="goToFeed" id="Ajn-cL-pLG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--FeedVC-->
+        <scene sceneID="MBk-ZC-z5x">
+            <objects>
+                <viewController id="10T-3c-6Tg" customClass="FeedVC" customModule="Social_Media" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nS5-Ee-bKa"/>
+                        <viewControllerLayoutGuide type="bottom" id="m7O-xk-4Uo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hlc-GP-fL1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yY-1X-BwY">
+                                <rect key="frame" x="157" y="318" width="60" height="30"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" red="1" green="0.93856569071800711" blue="0.98324489024925654" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutTapped:" destination="10T-3c-6Tg" eventType="touchUpInside" id="5QE-nA-P1Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1102881964686514" green="0.51523511710639247" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2yY-1X-BwY" firstAttribute="centerY" secondItem="hlc-GP-fL1" secondAttribute="centerY" id="G5Q-8r-yBn"/>
+                            <constraint firstItem="2yY-1X-BwY" firstAttribute="centerX" secondItem="hlc-GP-fL1" secondAttribute="centerX" id="dx6-MR-cqL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="4I7-0U-gBA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORf-RO-9VO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="124"/>
         </scene>
     </scenes>
     <resources>
