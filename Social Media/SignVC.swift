@@ -45,22 +45,31 @@ class SignInVC: UIViewController {
     @IBAction func facebookBtnTapped(_ sender: Any) {
         //let credential = FIRFacebookAuthProvider.credential(withAccessToken: (FBSDKAcessO)
     }
+
+    func firebaseAuth(_credential: AuthCredential){
+        Auth.auth().signIn(with: _credential, completion: { (user, error) in
+            if error != nil {
+                print("Geo: @@Unable to authenticate wth Firebase - \(error)")
+            } else {
+                print("Geo: @@Successfully authenticated with Firebase")
+                if let user = user {
+                    let userData = ["provider": _credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
+            }
+            
+        })
+    }
     
-//    func firebaseAuth(_credential: FIRAuthCredential) {
-//        FIRAuth.auth()?.signIn(with: credential, completion: <#T##FIRAuthResultCallback?##FIRAuthResultCallback?##(FIRUser?, Error?) -> Void#>)
-//    }
+    
     @IBAction func signInTapped(_ sender: Any) {
         if let email = emailField.text, let pwd = passwordField.text {
             Auth.auth().signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error == nil {
                     print("Geo: Email user authenticated with Firebase")
                     if let user = user {
-//                        KeychainWrapper.standard.set(user.uid, forKey: KEY_UID)
-//                        print("Geo: Data saved to keychain")
-//                        performSegue(withIdentifier: "goToFeed", sender: nil)
-                        self.completeSignIn(id: user.uid)
-
-
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
 
                     }
                 } else {
@@ -70,7 +79,9 @@ class SignInVC: UIViewController {
                         } else {
                             print("Geo: Succesfully authenticated with Firebase")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -84,7 +95,8 @@ class SignInVC: UIViewController {
         view.endEditing(true)
     }
     
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let keyChainResult =  KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Geo: Data saved to keychain \(keyChainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
