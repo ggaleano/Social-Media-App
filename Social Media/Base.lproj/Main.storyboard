@@ -203,6 +203,9 @@
                                                     <constraint firstAttribute="width" constant="49" id="xvB-xw-Db8"/>
                                                 </constraints>
                                                 <state key="normal" image="add-post"/>
+                                                <connections>
+                                                    <action selector="postBtnTapped:" destination="10T-3c-6Tg" eventType="touchUpInside" id="vak-dz-ASs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -224,7 +227,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="350"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jA4-II-vWX" id="9Ht-zF-XYP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="349"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-nr-iLP" customClass="FancyView" customModule="Social_Media" customModuleProvider="target">
@@ -312,6 +315,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="likeImg" destination="3bA-RK-qmj" id="lPs-2U-Q9G"/>
                                             <outlet property="likesLbl" destination="MKk-Sc-jNe" id="WOW-jo-KFA"/>
                                             <outlet property="postText" destination="sGJ-Yb-aaa" id="ed1-Ah-ABw"/>
                                             <outlet property="postingImg" destination="4tT-DW-NPl" id="RXo-Np-6bV"/>
@@ -337,6 +341,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captionField" destination="uqr-uD-xa7" id="UQi-05-aBf"/>
                         <outlet property="imageAdd" destination="qpa-Qo-Geg" id="tsu-gP-xDh"/>
                         <outlet property="tableView" destination="hF0-jC-pGO" id="CUw-Cu-VUA"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="4I7-0U-gBA"/>
